@@ -1,0 +1,44 @@
+﻿@model CartModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Sepet Sayfası</h1>
+<br />
+<br />
+<div class="row mt-5">
+    <div class="col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Ürün İsmi</th>
+                    <th>Fiyat</th>
+                    <th>Miktar</th>
+                    <th>Kaç Para</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.ImageUrl" width="80" />
+
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Quantity*Int32.Parse(item.Price))</td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+

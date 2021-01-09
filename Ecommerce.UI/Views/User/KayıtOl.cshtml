@@ -1,0 +1,54 @@
+﻿@model Ecommerce.UI.Models.AppUserViewModel
+@{
+    ViewData["Title"] = "KayıtOl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KayitOl</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="w-50 mx-auto p-4 mt-3 shadow" asp-action="KayıtOl" method="post">
+        <h4 class="text-center lead">Kayıt Olma Sayfası</h4>
+        <div class="form-group">
+            <label asp-for="@Model.Name"></label>
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            <input asp-for="@Model.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Surname"></label>
+            <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+            <input asp-for="@Model.Surname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Email"></label>
+            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            <input asp-for="@Model.Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Password"></label>
+            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            <input asp-for="@Model.Password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ConfirmPassword"></label>
+            <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+            <input asp-for="@Model.ConfirmPassword" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.UserName"></label>
+            <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+            <input asp-for="@Model.UserName" class="form-control" />
+        </div>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        
+        <input type="submit" class="btn btn-primary btn-sm" value="Kayıt Ol" />
+        <input type="submit" class="btn btn-primary btn-sm" value="Vazgeç" asp-controller="Home" asp-action="Index" />
+
+    </form>
+</body>
+</html>

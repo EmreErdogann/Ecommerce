@@ -1,0 +1,87 @@
+﻿@*@inject SignInManager<Ecommerce.Entities.Concrete.User>
+    @inject UserManager<Ecommerce.Entities.Concrete.User>*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="https://cdn.datatables.net/buttons/1.6.3/css/buttons.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <title>E-Ticaret Sistemi</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">E-Ticaret</a>
+            <ul class="navbar-nav mr-auto">
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                    <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="Index" class="nav-link">Ürün Bilgileri</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link">Kategori Bilgileri</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-controller="Cart" asp-action="Index" class="nav-link">Sepet</a>
+                    </li>
+                }
+            </ul>
+
+            <ul class="navbar-nav mr-auto">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a asp-controller="User" asp-action="Index" class="nav-link">@User.Identity.Name</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a asp-controller="User" asp-action="CıkısYap" class="nav-link">Çıkış Yap</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a asp-controller="User" asp-action="KayıtOl" class="nav-link">Üye Ol</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="User" asp-action="Index" class="nav-link">Giriş Yap</a>
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container pt-100 mb-5">
+        @RenderBody()
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.3/js/dataTables.buttons.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.3/js/buttons.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@@10"></script>
+
+    @await RenderSectionAsync("Scripts", false);
+
+</body>
+</html>
